@@ -1,2 +1,2 @@
 # DataStructure
-DataStructure with C++
+with C++
