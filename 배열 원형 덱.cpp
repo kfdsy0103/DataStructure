@@ -1,5 +1,4 @@
 #include <iostream>
-#include "CircularQueue.h"
 #define MAX_SIZE 100
 
 using namespace std;
@@ -16,27 +15,27 @@ protected:
 	int data[MAX_SIZE];
 public:
 	CircularQueue() : front(0), rear(0) {}
-	bool isEmpty() { return front == rear; }   // front == rear ÀÏ °æ¿ì empty
-	bool isFull() { return (rear + 1) % MAX_SIZE == front; }   // front°¡ rear ¾Õ¿¡ ÀÖÀ¸¸é full
+	bool isEmpty() { return front == rear; }   // front == rear ì¼ ê²½ìš° empty
+	bool isFull() { return (rear + 1) % MAX_SIZE == front; }   // frontê°€ rear ì•ì— ìˆìœ¼ë©´ full
 	void enqueue(int val) {
 		if (isFull())
-			Error("  Error: Å¥°¡ Æ÷È­ »óÅÂÀÔ´Ï´Ù.");
+			Error("  Error: íê°€ í¬í™” ìƒíƒœì…ë‹ˆë‹¤.");
 		rear = (rear + 1) % MAX_SIZE;
 		data[rear] = val;
 	}
 	int dequeue() {
 		if (isEmpty())
-			Error("  Error: Å¥°¡ °ø¹é »óÅÂÀÔ´Ï´Ù.");
+			Error("  Error: íê°€ ê³µë°± ìƒíƒœì…ë‹ˆë‹¤.");
 		front = (front + 1) % MAX_SIZE;
 		return data[front];
 	}
 	int peek() {
 		if (isEmpty())
-			Error("  Error: Å¥°¡ °ø¹é »óÅÂÀÔ´Ï´Ù.");
+			Error("  Error: íê°€ ê³µë°± ìƒíƒœì…ë‹ˆë‹¤.");
 		return data[(front + 1) % MAX_SIZE];
 	}
 	void display() {
-		cout << "Å¥ ³»¿ë : ";
+		cout << "í ë‚´ìš© : ";
 		int maxi = (front < rear) ? rear : rear + MAX_SIZE;
 		for (int i = front + 1; i <= maxi; i++)
 			cout << '[' << data[i % MAX_SIZE] << ']';
@@ -52,24 +51,24 @@ public:
 	int getFront() { return peek(); }
 	void addFront(int val) {
 		if (isFull())
-			Error("  Error: µ¦ÀÌ Æ÷È­ »óÅÂÀÔ´Ï´Ù.");
+			Error("  Error: ë±ì´ í¬í™” ìƒíƒœì…ë‹ˆë‹¤.");
 		data[front] = val;
 		front = (front - 1 + MAX_SIZE) % MAX_SIZE;
 	}
 	int deleteRear() {
 		if (isEmpty())
-			Error("  Error: µ¦ÀÌ °ø¹é »óÅÂÀÔ´Ï´Ù.");
+			Error("  Error: ë±ì´ ê³µë°± ìƒíƒœì…ë‹ˆë‹¤.");
 		int ret = data[rear];
 		rear = (rear - 1 + MAX_SIZE) % MAX_SIZE;
 		return ret;
 	}
 	int getRear() {
 		if (isEmpty())
-			Error("  Error: µ¦ÀÌ Æ÷È­ »óÅÂÀÔ´Ï´Ù.");
+			Error("  Error: ë±ì´ í¬í™” ìƒíƒœì…ë‹ˆë‹¤.");
 		return data[rear];
 	}
 	void display() {
-		cout << "µ¦ÀÇ ³»¿ë : ";
+		cout << "ë±ì˜ ë‚´ìš© : ";
 		int maxi = (front < rear) ? rear : rear + MAX_SIZE;
 		for (int i = front + 1; i <= maxi; i++)
 			cout << '[' << data[i % MAX_SIZE] << ']';
