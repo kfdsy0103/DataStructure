@@ -1,9 +1,9 @@
-// ÀÔ±¸ À§Ä¡¸¦ ½ºÅÃ¿¡ ³Ö¾î Å½»ö ½ÃÀÛ
+// ìž…êµ¬ ìœ„ì¹˜ë¥¼ ìŠ¤íƒì— ë„£ì–´ íƒìƒ‰ ì‹œìž‘
 
-// ½ºÅÃ¿¡¼­ ÇÏ³ªÀÇ À§Ä¡¸¦ ²¨³» ÇöÀç À§Ä¡·Î ¼³Á¤
-// ¸¸¾à ÇöÀç À§Ä¡°¡ Ãâ±¸¸é ¼º°ø
-// ¾Æ´Ï¶ó¸é »óÇÏÁÂ¿ì À§Ä¡¸¦ »ìÇÉ ÈÄ ½ºÅÃ¿¡ »ðÀÔ
-// ¹Ýº¹
+// ìŠ¤íƒì—ì„œ í•˜ë‚˜ì˜ ìœ„ì¹˜ë¥¼ êº¼ë‚´ í˜„ìž¬ ìœ„ì¹˜ë¡œ ì„¤ì •
+// ë§Œì•½ í˜„ìž¬ ìœ„ì¹˜ê°€ ì¶œêµ¬ë©´ ì„±ê³µ
+// ì•„ë‹ˆë¼ë©´ ìƒí•˜ì¢Œìš° ìœ„ì¹˜ë¥¼ ì‚´í•€ í›„ ìŠ¤íƒì— ì‚½ìž…
+// ë°˜ë³µ
 
 #include <iostream>
 #include <stack>
@@ -26,11 +26,11 @@ bool isValidLoc(int r, int c) {
 }
 
 int main() {
-	Location2D entry(1,0);   // ½ÃÀÛ À§Ä¡´Â (1,0)
+	Location2D entry(1,0);   // ì‹œìž‘ ìœ„ì¹˜ëŠ” (1,0)
 	stack<Location2D> st;
 	st.push(entry);
 
-	cout << "ÀÌµ¿ °æ·Î : ";
+	cout << "ì´ë™ ê²½ë¡œ : ";
 	while (!st.empty()) {
 		Location2D here = st.top();
 		st.pop();
@@ -40,7 +40,7 @@ int main() {
 
 		cout << '(' << r << ", " << c << ") ";
 		if (map[r][c] == 'x') {
-			cout << "\nÅ½»ö ¼º°ø!\n";
+			cout << "\níƒìƒ‰ ì„±ê³µ!\n";
 			return 0;
 		}
 		else {
@@ -51,5 +51,5 @@ int main() {
 			if (isValidLoc(r-1, c)) st.push(Location2D(r - 1, c));
 		}
 	}
-	cout << "\nÅ½»ö ½ÇÆÐ...\n";
+	cout << "\níƒìƒ‰ ì‹¤íŒ¨...\n";
 }
