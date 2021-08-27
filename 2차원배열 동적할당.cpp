@@ -10,7 +10,7 @@ int** alloc2DInt(int rows, int cols) {
 	for (int i = 0; i < rows; i++)
 		mat[i] = new int[cols];
 	return mat;
-}	// 1Â÷¿ø ¹è¿­À» ´ãÀ» rows Å©±âÀÇ °ø°£ ÇÒ´ç > cols Å©±âÀÇ 1Â÷¿ø ¹è¿­À» ¼ø¼­´ë·Î ´ëÀÔÇØ 2Â÷¿ø ±¸Çö
+}	// 1ì°¨ì› ë°°ì—´ì„ ë‹´ì„ rows í¬ê¸°ì˜ ê³µê°„ í• ë‹¹ >> cols í¬ê¸°ì˜ 1ì°¨ì› ë°°ì—´ì„ ìˆœì„œëŒ€ë¡œ ëŒ€ì…í•´ 2ì°¨ì› êµ¬í˜„
 
 void free2DInt(int** m, int r, int c) {
 	if (m != NULL) {
@@ -18,27 +18,27 @@ void free2DInt(int** m, int r, int c) {
 			delete[] m[i];
 		delete[] m;
 	}
-}	// ÇÒ´çÀÇ ¿ª¼øÀ¸·Î ÇØÁ¦
+}	// í• ë‹¹ì˜ ì—­ìˆœìœ¼ë¡œ í•´ì œ
 
 void set2DRandom(int** mat, int rows, int cols) {
 	for (int i = 0; i < rows; i++)
 		for (int k = 0; k < cols; k++)
 			mat[i][k] = rand() % 100;
-}	// ·£´ı °ª ÇÒ´ç
+}	// ëœë¤ ê°’ í• ë‹¹
 
 void print2DInt(int** mat, int rows, int cols) {
-	cout << "ÇàÀÇ ¼ö = " << rows << ", ¿­ÀÇ ¼ö = " << cols << "\n";
+	cout << "í–‰ì˜ ìˆ˜ = " << rows << ", ì—´ì˜ ìˆ˜ = " << cols << "\n";
 	for (int i = 0; i < rows; i++) {
 		for (int k = 0; k < cols; k++)
 			cout << setw(4) << mat[i][k];
 		cout << '\n';
 	}
-}	// Ãâ·Â ÇÔ¼ö
+}	// ì¶œë ¥ í•¨ìˆ˜
 
 int main() {
 	int a, b;
 
-	cout << "Çà°ú ¿­ÀÇ Å©±â¸¦ ÀÔ·ÂÇÏ¼¼¿ä: ";
+	cout << "í–‰ê³¼ ì—´ì˜ í¬ê¸°ë¥¼ ì…ë ¥í•˜ì„¸ìš”: ";
 	cin >> a >> b;
 
 	int** mat = alloc2DInt(a, b);
