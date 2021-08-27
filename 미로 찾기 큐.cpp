@@ -38,7 +38,7 @@ int main() {
 		cout << '(' << r << ", " << c << ") ";
 
 		if (Maze[r][c] == 'x') {
-			cout << "\n¹Ì·Î Å½»ö ¼º°ø!";
+			cout << "\në¯¸ë¡œ íƒìƒ‰ ì„±ê³µ!";
 			return 0;
 		}
 		else {
@@ -49,5 +49,5 @@ int main() {
 			if (isValidLoc(r, c + 1)) locQueue.push(Location2D(r, c + 1));
 		}
 	}
-	cout << "\n¹Ì·Î Å½»ö ½ÇÆĞ..";
+	cout << "\në¯¸ë¡œ íƒìƒ‰ ì‹¤íŒ¨...";
 }
