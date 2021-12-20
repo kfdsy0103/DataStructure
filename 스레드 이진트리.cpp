@@ -40,7 +40,7 @@ public:
 
 	void threadedInorder() {
 		if (!isEmpty()) {
-			cout << "  ½º·¹µå ÀÌÁøÆ®¸®: ";
+			cout << "  ìŠ¤ë ˆë“œ ì´ì§„íŠ¸ë¦¬ : ";
 			ThreadedBinNode* p = root;
 			while (p->getLeft())
 				p = p->getLeft();
