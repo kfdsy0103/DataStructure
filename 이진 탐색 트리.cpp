@@ -11,9 +11,9 @@ public:
 	BinaryNode* search(int key) {
 		BinaryNode* node = search(root, key);
 		if (node != NULL)
-			cout << "Å½»ö ¼º°ø : Å° °ªÀÌ " << key << "ÀÎ ³ëµå = " << node << "\n";
+			cout << "íƒìƒ‰ ì„±ê³µ : í‚¤ ê°’ì´ " << key << "ì¸ ë…¸ë“œ = " << node << "\n";
 		else
-			cout << "Å½»ö ½ÇÆĞ : Å° °ªÀÌ " << key << "ÀÎ ³ëµå ¾øÀ½\n";
+			cout << "íƒìƒ‰ ì‹¤íŒ¨ : í‚¤ ê°’ì´ " << key << "ì¸ ë…¸ë“œ ì—†ìŒ\n";
 		return node;	
 	}
 	BinaryNode* search(BinaryNode* n, int key) {
@@ -74,9 +74,9 @@ public:
 			remove(parent, node);
 	}
 	void remove(BinaryNode* parent, BinaryNode* node) {
-		// 1. »èÁ¦ÇÏ·Á´Â ³ëµå°¡ ´Ü¸»³ëµåÀÎ °æ¿ì ( ¾Ë¾Æ¾ß ÇÏ´Â ³ëµå : »èÁ¦ÇÒ ³ëµå, »èÁ¦ÇÒ ³ëµåÀÇ ºÎ¸ğ ) 
+		// 1. ì‚­ì œí•˜ë ¤ëŠ” ë…¸ë“œê°€ ë‹¨ë§ë…¸ë“œì¸ ê²½ìš° ( ì•Œì•„ì•¼ í•˜ëŠ” ë…¸ë“œ : ì‚­ì œí•  ë…¸ë“œ, ì‚­ì œí•  ë…¸ë“œì˜ ë¶€ëª¨ ) 
 		if (node->isLeaf()) {
-			if (parent == NULL)	 // »èÁ¦µÇ´Â ³ëµå°¡ ·çÆ®³ëµåÀÎ °æ¿ì
+			if (parent == NULL)	 // ì‚­ì œë˜ëŠ” ë…¸ë“œê°€ ë£¨íŠ¸ë…¸ë“œì¸ ê²½ìš°
 				root = NULL;
 			else {
 				if (parent->getLeft() == node)
@@ -86,11 +86,11 @@ public:
 			}
 		}
 		
-		// 2. »èÁ¦ÇÏ·Á´Â ³ëµå°¡ ÇÏ³ªÀÇ ¼­ºêÆ®¸®¸¸ °®´Â °æ¿ì ( ¾Ë¾Æ¾ß ÇÏ´Â ³ëµå : »èÁ¦ÇÒ ³ëµå, »èÁ¦ÇÒ ³ëµåÀÇ ºÎ¸ğ, »èÁ¦ÇÒ ³ëµåÀÇ À¯ÀÏ ÀÚ½Ä )
+		// 2. ì‚­ì œí•˜ë ¤ëŠ” ë…¸ë“œê°€ í•˜ë‚˜ì˜ ì„œë¸ŒíŠ¸ë¦¬ë§Œ ê°–ëŠ” ê²½ìš° ( ì•Œì•„ì•¼ í•˜ëŠ” ë…¸ë“œ : ì‚­ì œí•  ë…¸ë“œ, ì‚­ì œí•  ë…¸ë“œì˜ ë¶€ëª¨, ì‚­ì œí•  ë…¸ë“œì˜ ìœ ì¼ ìì‹ )
 		else if (node->getLeft() == NULL || node->getRight() == NULL) {
-			BinaryNode* child = (node->getLeft() != NULL) ? node->getLeft() : node->getRight();		// À¯ÀÏÇÑ ÀÚ½Ä ³ëµå °¡Á®¿À±â
-			if (node == root)	 // »èÁ¦µÇ´Â ³ëµå°¡ ·çÆ®³ëµåÀÎ °æ¿ì
-				root = child;	 // ÀÚ½ÄÀÌ ·çÆ®°¡ µÊ
+			BinaryNode* child = (node->getLeft() != NULL) ? node->getLeft() : node->getRight();		// ìœ ì¼í•œ ìì‹ ë…¸ë“œ ê°€ì ¸ì˜¤ê¸°
+			if (node == root)	 // ì‚­ì œë˜ëŠ” ë…¸ë“œê°€ ë£¨íŠ¸ë…¸ë“œì¸ ê²½ìš°
+				root = child;	 // ìì‹ì´ ë£¨íŠ¸ê°€ ë¨
 			else {
 				if (parent->getLeft() == node)
 					parent->setLeft(child);
@@ -99,25 +99,25 @@ public:
 			}
 		}
 
-		// 3. »èÁ¦ÇÏ·Á´Â ³ëµå°¡ µÎ °³ÀÇ ¼­ºêÆ®¸®¸¦ °®´Â °æ¿ì ( ¾Ë¾Æ¾ß ÇÏ´Â ³ëµå : »èÁ¦ÇÒ ³ëµå, »èÁ¦ÇÒ ³ëµåÀÇ ºÎ¸ğ, ÈÄ°è ³ëµå, ÈÄ°è ³ëµåÀÇ ºÎ¸ğ )
-		// »èÁ¦ÇÏ´Â ³ëµå¿Í °¡Àå °ªÀÌ ºñ½ÁÇÑ ³ëµå¸¦ °¡Á®¿Í¼­ ¿¬°á
-		// ºñ½ÁÇÑ °ªÀº ¿ŞÂÊ ¼­ºêÆ®¸®¿¡¼­ °¡Àå Å« °ª or ¿À¸¥ÂÊ ¼­ºêÆ®¸®¿¡¼­ °¡Àå ÀÛÀº °ª. µÑ Áß ¾î´À °ÍÀ» ¿¬°áÇØµµ »ó°ü ¾ø´Ù.
+		// 3. ì‚­ì œí•˜ë ¤ëŠ” ë…¸ë“œê°€ ë‘ ê°œì˜ ì„œë¸ŒíŠ¸ë¦¬ë¥¼ ê°–ëŠ” ê²½ìš° ( ì•Œì•„ì•¼ í•˜ëŠ” ë…¸ë“œ : ì‚­ì œí•  ë…¸ë“œ, ì‚­ì œí•  ë…¸ë“œì˜ ë¶€ëª¨, í›„ê³„ ë…¸ë“œ, í›„ê³„ ë…¸ë“œì˜ ë¶€ëª¨ )
+		// ì‚­ì œí•˜ëŠ” ë…¸ë“œì™€ ê°€ì¥ ê°’ì´ ë¹„ìŠ·í•œ ë…¸ë“œë¥¼ ê°€ì ¸ì™€ì„œ ì—°ê²°
+		// ë¹„ìŠ·í•œ ê°’ì€ ì™¼ìª½ ì„œë¸ŒíŠ¸ë¦¬ì—ì„œ ê°€ì¥ í° ê°’ or ì˜¤ë¥¸ìª½ ì„œë¸ŒíŠ¸ë¦¬ì—ì„œ ê°€ì¥ ì‘ì€ ê°’. ë‘˜ ì¤‘ ì–´ëŠ ê²ƒì„ ì—°ê²°í•´ë„ ìƒê´€ ì—†ë‹¤.
 		else {
-			BinaryNode* succ = node;				// ÈÄ°è ³ëµå : ¿À¸¥ÂÊ ¼­ºêÆ®¸®¿¡¼­ °¡Àå ÀÛÀº °ª
-			BinaryNode* succp = node->getRight();	// ÈÄ°è ³ëµåÀÇ ºÎ¸ğ ³ëµå
+			BinaryNode* succ = node;				// í›„ê³„ ë…¸ë“œ : ì˜¤ë¥¸ìª½ ì„œë¸ŒíŠ¸ë¦¬ì—ì„œ ê°€ì¥ ì‘ì€ ê°’
+			BinaryNode* succp = node->getRight();	// í›„ê³„ ë…¸ë“œì˜ ë¶€ëª¨ ë…¸ë“œ
 			while (succ->getLeft() != NULL) {
 				succp = succ;
 				succ = succ->getLeft();
 			}
 
-			// ÈÄ°è ³ëµåÀÇ ºÎ¸ğ¿Í ÈÄ°è ³ëµåÀÇ ¿À¸¥ÂÊ ÀÚ½ÄÀ» ¿¬°á
+			// í›„ê³„ ë…¸ë“œì˜ ë¶€ëª¨ì™€ í›„ê³„ ë…¸ë“œì˜ ì˜¤ë¥¸ìª½ ìì‹ì„ ì—°ê²°
 			if (succp->getLeft() == succ)
 				succp->setLeft(succ->getRight());
 			else
-				succp->setRight(succ->getRight());	// ÈÄ°è ³ëµå°¡ »èÁ¦ ³ëµåÀÇ ¹Ù·Î ¿À¸¥ÂÊ ÀÚ½ÄÀÎ °æ¿ì
+				succp->setRight(succ->getRight());	// í›„ê³„ ë…¸ë“œê°€ ì‚­ì œ ë…¸ë“œì˜ ë°”ë¡œ ì˜¤ë¥¸ìª½ ìì‹ì¸ ê²½ìš°
 			
-			node->setData(succ->getData());			// ½ÇÁ¦ node¸¦ »èÁ¦ÇÏ´Â °ÍÀÌ ¾Æ´Ñ µ¥ÀÌÅÍ¸¦ º¹»çÇÏ°í ÈÄ°è ³ëµå¸¦ »èÁ¦ÇÏ´Â ¹æ¹ıÀÓ
-			node = succ;							// »èÁ¦ÇÒ ³ëµå¸¦ succ·Î º¯°æ
+			node->setData(succ->getData());			// ì‹¤ì œ nodeë¥¼ ì‚­ì œí•˜ëŠ” ê²ƒì´ ì•„ë‹Œ ë°ì´í„°ë¥¼ ë³µì‚¬í•˜ê³  í›„ê³„ ë…¸ë“œë¥¼ ì‚­ì œí•˜ëŠ” ë°©ë²•ì„
+			node = succ;							// ì‚­ì œí•  ë…¸ë“œë¥¼ succë¡œ ë³€ê²½
 		}	
 		delete node;
 	}
@@ -137,9 +137,9 @@ int main() {
 	tree.insert( new BinaryNode(30) );
 	tree.insert( new BinaryNode(99) );
 
-	cout << " ³ëµåÀÇ °³¼ö = " << tree.getCount();
-	cout << "\n ´Ü¸»ÀÇ °³¼ö = " << tree.getLeafCount();
-	cout << "\n Æ®¸®ÀÇ ³ôÀÌ = " << tree.getHeight();
+	cout << " ë…¸ë“œì˜ ê°œìˆ˜ = " << tree.getCount();
+	cout << "\n ë‹¨ë§ì˜ ê°œìˆ˜ = " << tree.getLeafCount();
+	cout << "\n íŠ¸ë¦¬ì˜ ë†’ì´ = " << tree.getHeight();
 	
 	tree.preorder();
 	tree.inorder();
@@ -149,22 +149,22 @@ int main() {
 	tree.search(26);
 	tree.search(25);
 
-	cout << "  »èÁ¦ : case 1 ==> ³ëµå  3 »èÁ¦";
+	cout << "  ì‚­ì œ : case 1 ==> ë…¸ë“œ  3 ì‚­ì œ";
 	tree.remove( 3);
 	tree.levelorder();
-	cout << "  »èÁ¦ : case 2 ==> ³ëµå 68 »èÁ¦";
+	cout << "  ì‚­ì œ : case 2 ==> ë…¸ë“œ 68 ì‚­ì œ";
 	tree.remove(68);
 	tree.levelorder();
-	cout << "  »èÁ¦ : case 3 ==> ³ëµå 18 »èÁ¦";
+	cout << "  ì‚­ì œ : case 3 ==> ë…¸ë“œ 18 ì‚­ì œ";
 	tree.remove(18);
 	tree.levelorder();
-	cout << "  »èÁ¦ : case 4 ==> ³ëµå 35 »èÁ¦";
+	cout << "  ì‚­ì œ : case 4 ==> ë…¸ë“œ 35 ì‚­ì œ";
 	tree.remove(35);
 	tree.levelorder();
 
-	cout << " ³ëµåÀÇ °³¼ö = " << tree.getCount();
-	cout << "\n ´Ü¸»ÀÇ °³¼ö = " << tree.getLeafCount();
-	cout << "\n Æ®¸®ÀÇ ³ôÀÌ = " << tree.getHeight();
+	cout << " ë…¸ë“œì˜ ê°œìˆ˜ = " << tree.getCount();
+	cout << "\n ë‹¨ë§ì˜ ê°œìˆ˜ = " << tree.getLeafCount();
+	cout << "\n íŠ¸ë¦¬ì˜ ë†’ì´ = " << tree.getHeight();
 
 	return 0;
 }
